@@ -125,7 +125,7 @@ inline double get_D(const std::string& name, int temp) {
     if (segal_consts.find(name) == segal_consts.end()) {
         throw std::logic_error("unknown constant " + name);
     }
-    double ans = 0.02682 * std::pow(temp, 1.5) / 
+    double ans = 0.02628 * std::pow(temp, 1.5) / 
         (atmosphere_pressure 
          * ((segal_consts[name]["sigma"] + segal_consts["N2"]["sigma"]) / 2)
          * (1.074 * std::pow(temp /  std::pow(segal_consts[name]["epsil"] * segal_consts["N2"]["epsil"], 0.5), -0.1604))
