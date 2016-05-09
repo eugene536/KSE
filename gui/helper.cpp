@@ -29,7 +29,7 @@ int main() {
         vector<double> ys;
         transform(temp.begin(), temp.end(), back_inserter(ys), 
             [&dummy, &name] (int x) -> double {
-                return dummy.getValue(name, x);
+                return log(dummy.getValue(name, x)) - 1;
             }
         );
 
@@ -41,7 +41,7 @@ int main() {
             ss << fixed << setprecision(3) << y << " ";
         ss << "\n";
 
-        string command = "echo \"" + ss.str() + "\" | ./log_plot.py --yName " + name;
+        string command = "echo \"" + ss.str() + "\" | ./log_plot.py --yName \"" + name + " (log - 1)\"";
         thread commandThread(
             [command = command.c_str()] () { 
                 system(command); 
