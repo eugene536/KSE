@@ -6,7 +6,7 @@ using namespace std;
 struct DummyClass {
 public:
     double getValue(const string&, int) {
-        return rand() % 300 - rand() % 200;
+        return rand() % 300 - (rand() % 10 * 1.) / 1000;
     }
 };
 
@@ -38,7 +38,7 @@ int main() {
             ss << x << " ";
         ss << "\n";
         for (double y: ys)
-            ss << setprecision(3) << y << " ";
+            ss << fixed << setprecision(3) << y << " ";
         ss << "\n";
 
         string command = "echo \"" + ss.str() + "\" | ./log_plot.py --yName " + name;
