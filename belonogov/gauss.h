@@ -14,30 +14,30 @@ using namespace std;
 
 namespace parts_1_2 {
 
-    inline vector<double> gauss(vector<vector<double> > b) {
-        int n = b.size();
-        assert((int) b[0].size() == n + 1);
+    inline vector<double> gauss(vector<vector<double> > data) {
+        int n = data.size();
+        assert((int) data[0].size() == n + 1);
         for (int i = 0; i < n; i++) {
             int cur = i;
             for (int j = i; j < n; j++)
-                if (abs(b[cur][i]) < abs(b[j][i]))
+                if (abs(data[cur][i]) < abs(data[j][i]))
                     cur = j;
             for (int j = 0; j <= n; j++)
-                swap(b[cur][j], b[i][j]);
-            double cof = b[i][i];
+                swap(data[cur][j], data[i][j]);
+            double cof = data[i][i];
             assert(abs(cof) > 1e-9);
             for (int j = 0; j <= n; j++)
-                b[i][j] /= cof;
+                data[i][j] /= cof;
             for (int j = 0; j < n; j++) {
                 if (i == j) continue;
-                double cof = b[j][i];
+                double cof = data[j][i];
                 for (int k = 0; k <= n; k++)
-                    b[j][k] -= cof * b[i][k];
+                    data[j][k] -= cof * data[i][k];
             }
         }
         vector<double> res;
         for (int i = 0; i < n; i++)
-            res.push_back(b[i][n]);
+            res.push_back(data[i][n]);
         return res;
     }
 
