@@ -14,14 +14,14 @@ namespace consts {
    temp - temperature in kelvin
    return K - const equilibrium reactions ("ravnovesiya reaktsiy")
 */
-inline double get_k(int number, int temp);
+inline double get_K(int number, int temp);
 
 /* 
    name - name of substance, "AlCl3", "N2", "Al"
    temp - temperature in kelvin
    return const D - diffusion coefficient
 */
-inline double get_d(const std::string& name, double temp);
+inline double get_D(const std::string& name, int temp);
 
 static const double R_kmol = 8.314;
 static const int atmosphere_pressure = 100000;
@@ -76,7 +76,7 @@ inline double get_g(const std::string& name, double temp) {
     return cur["H"] - F;
 }
 
-inline double get_k(int number, int temp) {
+inline double get_K(int number, int temp) {
     double delta_g = 0;
     switch (number) {
         case 1:
@@ -119,7 +119,7 @@ inline double get_k(int number, int temp) {
     return exp(-delta_g/(R_kmol*temp)) / atmosphere_pressure;
 }
 
-inline double get_d(const std::string& name, double temp) {
+inline double get_D(const std::string& name, int temp) {
     static std::map<std::string, std::map<std::string, double> > segal_consts;
     update_map(segal_consts);
     if (segal_consts.find(name) == segal_consts.end()) {
