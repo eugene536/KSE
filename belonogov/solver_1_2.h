@@ -214,6 +214,11 @@ namespace parts_1_2 {
             else
                 cofType = 69.723 / 5910;
 
+
+            cerr.precision(15);
+            for (int i = 0; i < n; i++)
+                cerr << G[i] << " ";
+            cerr << endl;
             VType = (G[getId(type + "Cl")] + G[getId(type + "Cl2")] + G[getId(type + "Cl3")]) * cofType * 1e9;
 
 

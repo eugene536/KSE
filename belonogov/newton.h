@@ -140,8 +140,10 @@ namespace parts_1_2 {
             }
 
         }
-        if (!converge)
+        if (!converge) {
             db("NOT Converge");
+            assert(false);
+        }
         return point;
     }
 }
