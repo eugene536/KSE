@@ -15,6 +15,7 @@
 #undef NDEBUG
 
 #include <cassert>
+#include <algorithm>
 #include "newton.h"
 #include "../consts/consts.h"
 #include "main.h"
@@ -26,6 +27,9 @@ using namespace std;
 namespace parts_1_2 {
     inline bool equal(double a, double b) {
         return fabs(a - b) < 1e-9;
+    }
+    inline shared_ptr<Expression> makeVar(double cof, int deg, int id) {
+        return shared_ptr<Expression>(new Variable(cof, deg, id));
     }
 
     struct Solver {
@@ -42,9 +46,6 @@ namespace parts_1_2 {
             return id[s];
         }
 
-        shared_ptr<Expression> makeVar(double cof, int deg, int id) {
-            return shared_ptr<Expression>(new Variable(cof, deg, id));
-        }
 
         void solve(string type, double temp) {
             id.clear();
@@ -73,10 +74,16 @@ namespace parts_1_2 {
             D[getId(type + "Cl2")] = consts::get_D(type + "Cl2", temp);
             D[getId(type + "Cl3")] = consts::get_D(type + "Cl3", temp);
 
-            cerr << "D: ";
-            for (auto x: D)
-                cerr << x << " ";
-            cerr << endl;
+            //db(D[getId("HCl")]);
+            //db(D[getId("H2")]);
+//            db(D[getId(type + "Cl")]);
+//            db(D[getId(type + "Cl2")]);
+//            db(D[getId(type + "Cl3")]);
+
+//            cerr << "D: ";
+            //for (auto x: D)
+                //cerr << x << " ";
+            //cerr << endl;
 
             //exit(0);
 
@@ -139,8 +146,46 @@ namespace parts_1_2 {
             ));
 
             vector<double> start;
+//            for (int i = 0; i < n; i++) {
+//                start.push_back(10000 + rand() % 1000);
+//            }
+
+
+            //start = {6.070802584054077, 0.29188903315017906, 5980.346313876918, 1561.363607968151, 0.033372694284474355};
+            //start = {6.070802584054077, 0.29188903315017906, 5980.346313876918, 1561.363607968151, 0.033372694284474355};
+
+            //start = {14314.459040253054, 24.597915887555686, 0.005067197384447571, 1559.7373768084688, 10.448792422347129};
+
+            //start = {6.070802584054077, 0.29188903315017906, 5980.346313876918, 1561.363607968151, 0.033372694284474355};
+            //start = {6.070802584054077, 0.29188903315017906, 5980.346313876918, 0.033372694284474355, 1561.363607968151} ;
+
+            //start = {14314.459040253054, 24.597916887555686, 0.005067197384447571, 10.448792422347129, 1559.7373768084688}; // good
+            start = {14000, 24, 0, 10, 1550};
+
+
+
+
+            //start = {1559.73759894588, 10.447369712930183, 14314.505942955118, 24.572462638424625, 0.005055759724241936};
+            cerr << "val: ";
+            cerr << fixed << endl;
             for (int i = 0; i < n; i++)
-                start.push_back(rand() % 10);
+                cerr << f[i]->value(start) << " ";
+            cerr << endl;
+//            for (int tt = 0; tt < 120; tt++) {
+//                double mx = 0;
+//                for (int i = 0; i < n; i++)
+//                    mx = max(mx, abs((f[i]->value(start))));
+//                db2(tt, mx);
+//                next_permutation(start.begin(), start.end());
+//            }
+
+            //cerr << endl;
+            //exit(0);
+            //db(f[2]->derivative(start, 0));
+            //exit(0);
+
+
+
             auto Pe = newton(start, f);
 
             G.resize(n);

@@ -35,8 +35,12 @@ namespace parts_1_2 {
 
         double derivative(vector < double > point, int id) override {
             double res = 0;
-            for (auto v: ch)
-                res += v->derivative(point, id);
+            for (auto v: ch) {
+                //res += v->derivative(point, id);
+                double x = v->derivative(point, id);
+                res += x;
+                //db(x);
+            }
             return res;
         }
     };
@@ -51,7 +55,7 @@ namespace parts_1_2 {
         }
 
         double derivative(vector < double > point, int id) override {
-            return l->value(point) * r->derivative(point, id) + l->derivative(point, id) + r->value(point);
+            return l->value(point) * r->derivative(point, id) + l->derivative(point, id) * r->value(point);
         }
     };
 
@@ -86,17 +90,36 @@ namespace parts_1_2 {
 
         bool converge = 0;
         for (int it = 0; it < 100; it++) {
-            vector < vector < double > > data(n, vector < double > (n + 1));
+            cerr << "cur Point ==== \t ";
+            for (auto x: point)
+                cerr << x << " ";
+            cerr << endl;
+            /*for (auto & x: point) {
+                x = max(x, 0.0);
+                x = min(1e5, x);
+            }*/
+//            cerr << "after  cur Point ==== \t ";
+//            for (auto x: point)
+//                cerr << x << " ";
+//            cerr << endl;
+
+            vector < vector < double > > data(n, vector < double > (n + 1, 0));
             for (int i = 0; i < n; i++) {
                 data[i][n] += - f[i]->value(point);
                 for (int j = 0; j < n; j++) {
                     double der = f[i]->derivative(point, j);
                     data[i][j] += der;
                     data[i][n] += der * point[j];
+                    //db3(i, j, der);
                 }
             }
             auto prev = point;
+            if (it == 0)
+                printMat(data);
+            //exit(0);
+
             point = gauss(data);
+
             double mxDiff = 0;
             double mx = point[0];
             for (int i = 0; i < (int)point.size(); i++)
@@ -104,15 +127,18 @@ namespace parts_1_2 {
             for (auto x: point)
                 mx = max(mx, x);
 
+//            cerr << "after cur Point ==== \t ";
+//            for (auto x: point)
+//                cerr << x << " ";
+//            /cerr << endl;
+
+
             if (mxDiff < max(1.0, abs(mx)) * 1e-6) {
                 converge = 1;
                 db("Converge");
                 break;
             }
-            /*db3(it, mxDiff, mx);
-            for (auto x: point)
-                cerr << x << " ";
-            cerr << endl;*/
+
         }
         if (!converge)
             db("NOT Converge");
