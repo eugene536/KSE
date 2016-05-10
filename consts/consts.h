@@ -17,14 +17,14 @@ namespace consts {
    temp - temperature in kelvin
    return K - const equilibrium reactions ("ravnovesiya reaktsiy")
 */
-    inline double get_K(int number, int temp);
+    inline double get_K(int number, double temp);
 
 /* 
    name - name of substance, "AlCl3", "N2", "Al"
    temp - temperature in kelvin
    return const D - diffusion coefficient
 */
-    inline double get_D(const std::string &name, int temp);
+    inline double get_D(const std::string &name, double temp);
 
     static const double R_kmol = 8.314;
     static const int atmosphere_pressure = 100000;
@@ -46,7 +46,7 @@ namespace consts {
     const string AlCl2 = "AlCl2";
     const string AlCl3 = "AlCl3";
 
-    const string GaCl =  "GaCl";
+    const string GaCl = "GaCl";
     const string GaCl2 = "GaCl2";
     const string GaCl3 = "GaCl3";
 
@@ -106,8 +106,6 @@ namespace consts {
     }
 
 
-
-
     inline double get_g(const std::string &name, double temp) {
         static std::map<std::string, std::map<std::string, double> > segal_consts;
         update_map(segal_consts);
@@ -126,24 +124,20 @@ namespace consts {
         return cur["H"] - F * temp;
     }
 
-    inline double get_K(int number, int temp) {
+    inline double get_K(int number, double temp) {
         double delta_g = 0;
         switch (number) {
             case 1:
-                delta_g = 2 * get_g(Al, temp) + 2 * get_g(HCl, temp) - 2 * get_g(AlCl, temp) -
-                          1 * get_g(H2, temp);
+                delta_g = 2 * get_g(Al, temp) + 2 * get_g(HCl, temp) - 2 * get_g(AlCl, temp) - 1 * get_g(H2, temp);
                 break;
             case 2:
-                delta_g = 1 * get_g(Al, temp) + 2 * get_g(HCl, temp) - 1 * get_g(AlCl2, temp) -
-                          1 * get_g(H2, temp);
+                delta_g = 1 * get_g(Al, temp) + 2 * get_g(HCl, temp) - 1 * get_g(AlCl2, temp) - 1 * get_g(H2, temp);
                 break;
             case 3:
-                delta_g = 2 * get_g(Al, temp) + 6 * get_g(HCl, temp) - 2 * get_g(AlCl3, temp) -
-                          3 * get_g(H2, temp);
+                delta_g = 2 * get_g(Al, temp) + 6 * get_g(HCl, temp) - 2 * get_g(AlCl3, temp) - 3 * get_g(H2, temp);
                 break;
             case 4:
-                delta_g = 2 * get_g(Ga, temp) + 2 * get_g(HCl, temp) - 2 * get_g(GaCl, temp) -
-                          1 * get_g(H2, temp);
+                delta_g = 2 * get_g(Ga, temp) + 2 * get_g(HCl, temp) - 2 * get_g(GaCl, temp) - 1 * get_g(H2, temp);
                 break;
             case 5:
                 delta_g = 1 * get_g(Ga, temp) + 2 * get_g(HCl, temp) - 1 * get_g(GaCl2, temp) -
@@ -162,21 +156,27 @@ namespace consts {
                           1 * get_g(HCl, temp) - 1 * get_g(H2, temp);
                 break;
         };
-        return exp(-delta_g / (R_kmol * temp)) / atmosphere_pressure;
+        double tmp = exp(-delta_g / (R_kmol * temp));
+
+        if (number == 1 || number == 4 || number == 9)
+            tmp /= atmosphere_pressure;
+        if (number == 3 || number == 6)
+            tmp *= atmosphere_pressure;
+        return tmp;
     }
 
 
-    inline double get_D(const std::string &name, int temp) {
+    inline double get_D(const std::string &name, double temp) {
         static std::map<std::string, std::map<std::string, double> > segal_consts;
         update_map(segal_consts);
         if (segal_consts.find(name) == segal_consts.end()) {
             throw std::logic_error("unknown constant " + name);
         }
         double ans = 0.02628 * std::pow(temp, 1.5) /
-                        (atmosphere_pressure
+                     (atmosphere_pressure
                       * ((segal_consts[name][sigma] + segal_consts[N2][sigma]) / 2)
                       * (1.074 * std::pow(temp / std::pow(segal_consts[name][epsil] * segal_consts[N2][epsil], 0.5),
-                                  -0.1604))
+                                          -0.1604))
                       * (std::pow((2 * segal_consts[name][mu] * segal_consts[N2][mu] /
                                    (segal_consts[name][mu] + segal_consts[N2][mu])), 0.5))
                      );
