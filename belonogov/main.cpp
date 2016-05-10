@@ -9,13 +9,12 @@ int main() {
     parts_1_2::Solver solver;
 
     if (1) {
+        //db(consts::get_K(1, 823));
 
         cout << solver.get("Al", "V", 823) << endl;
         cout << solver.get("Al", "AlCl", 823) << endl;
         cout << solver.get("Al", "AlCl2", 823) << endl;
         cout << solver.get("Al", "AlCl3", 823) << endl;
-
-
 
     }
     else {

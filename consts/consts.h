@@ -59,7 +59,7 @@ namespace consts {
 
     static const std::string const_data_value(
             "14 "
-                    "AlCl                  51032.    318.9948      36.94626   -0.001226431  1.1881743       5.638541       -5.066135        5.219347    62.4345    3.58     932.   "
+                    "AlCl                 -51032.    318.9948      36.94626   -0.001226431  1.1881743       5.638541       -5.066135        5.219347    62.4345    3.58     932.   "
                     "AlCl2               -259000.    427.2137      56.56409   -0.002961273  1.893842       12.40072       -22.65441        21.29898     97.8875    5.3      825. "
                     "AlCl3               -584100.    511.8114      81.15042   -0.004834879  2.752097       13.40078       -21.28001        16.92868    133.3405    5.13     472. "
                     "GaCl                 -70553.    332.2718      37.11052   -0.000746187  1.1606512       4.891346       -4.467591        5.506236   105.173     3.696    348.2 "
@@ -121,6 +121,8 @@ namespace consts {
                    + cur["phi5"] * x_on_temp(temp)
                    + cur["phi6"] * pow(x_on_temp(temp), 2)
                    + cur["phi7"] * pow(x_on_temp(temp), 3);
+        //db2(cur["H"] / temp, F);
+        //db2(cur["H"], F);
         return cur["H"] - F * temp;
     }
 
@@ -129,6 +131,10 @@ namespace consts {
         switch (number) {
             case 1:
                 delta_g = 2 * get_g(Al, temp) + 2 * get_g(HCl, temp) - 2 * get_g(AlCl, temp) - 1 * get_g(H2, temp);
+                //db(get_g(Al, temp) / temp);
+                //db(get_g(HCl, temp) / temp);
+                //db(get_g(AlCl, temp) / temp);
+                //db(get_g(H2, temp) / temp);
                 break;
             case 2:
                 delta_g = 1 * get_g(Al, temp) + 2 * get_g(HCl, temp) - 1 * get_g(AlCl2, temp) - 1 * get_g(H2, temp);
@@ -156,7 +162,13 @@ namespace consts {
                           1 * get_g(HCl, temp) - 1 * get_g(H2, temp);
                 break;
         };
+        //double tmp2 = -delta_g / temp;
+        //db2(number, tmp2);
+
         double tmp = exp(-delta_g / (R_kmol * temp));
+
+        //db3(number, temp, tmp);
+
 
         if (number == 1 || number == 4 || number == 9)
             tmp /= atmosphere_pressure;
