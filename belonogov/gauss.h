@@ -46,7 +46,7 @@ namespace parts_1_2 {
             for (int j = 0; j <= n; j++)
                 swap(data[cur][j], data[i][j]);
             double cof = data[i][i];
-            assert(abs(cof) > 1e-9);
+            assert(abs(cof) > 1e-30);
             for (int j = 0; j <= n; j++)
                 data[i][j] /= cof;
             for (int j = 0; j < n; j++) {

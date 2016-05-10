@@ -114,8 +114,8 @@ namespace parts_1_2 {
                 }
             }
             auto prev = point;
-            if (it == 0)
-                printMat(data);
+            //if (it == 0)
+                //printMat(data);
             //exit(0);
 
             point = gauss(data);
