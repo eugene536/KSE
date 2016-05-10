@@ -12,10 +12,19 @@ int main() {
         //db(consts::get_K(1, 823));
 
         //cout << solver.get("Al", "V", 823) << endl;
-        cout << solver.get("Ga", "V", 950 + 273) << endl;
-        cout << solver.get("Ga", "GaCl", 950 + 273) << endl;
-        cout << solver.get("Ga", "GaCl2", 950 + 273) << endl;
-        cout << solver.get("Ga", "GaCl3", 950 + 273) << endl;
+//        cout << solver.get("Ga", "V", 950 + 273) << endl;
+//        cout << solver.get("Ga", "GaCl", 950 + 273) << endl;
+//        cout << solver.get("Ga", "GaCl2", 950 + 273) << endl;
+//        cout << solver.get("Ga", "GaCl3", 950 + 273) << endl;
+        for (int i = 350; i <= 650; i++) {
+            db(i);
+            cout << solver.get("Al", "AlCl", i + 273) << endl;
+        }
+
+        for (int i = 650; i <= 950; i++) {
+            db(i);
+            cout << solver.get("Ga", "GaCl", i + 273) << endl;
+        }
 
     }
     else {

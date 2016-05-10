@@ -48,6 +48,10 @@ namespace parts_1_2 {
 
 
         void solve(string type, double temp) {
+            double C = temp - 273;
+            if (type == "Al") assert(340 <= C &&  C <= 660);
+            if (type == "Ga") assert(640 <= C &&  C <= 960);
+
             id.clear();
             const int n = 5;
             vector<shared_ptr<Expression> > f(n);
