@@ -94,7 +94,7 @@ inline double get_g(const std::string& name, double temp) {
                + cur["phi5"] * x_on_temp(temp)
                + cur["phi6"] * std::pow(x_on_temp(temp), 2)
                + cur["phi7"] * std::pow(x_on_temp(temp), 3);
-    return cur["H"] - F;
+    return cur["H"] - F * temp;
 }
 
 inline double get_K(int number, int temp) {
