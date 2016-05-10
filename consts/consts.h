@@ -31,6 +31,30 @@ namespace consts {
     some math
 */
 
+    const string HCl = "HCl";
+    const string H2 = "H2";
+    const string N2 = "N2";
+    const string Al = "Al";
+    const string Ga = "Ga";
+    const string NH3 = "NH3";
+    const string AlN = "AlN";
+    const string GaN = "GaN";
+
+    const string AlCl = "AlCl";
+    const string AlCl2 = "AlCl2";
+    const string AlCl3 = "AlCl3";
+
+    const string GaCl =  "GaCl";
+    const string GaCl2 = "GaCl2";
+    const string GaCl3 = "GaCl3";
+
+    const string sigma = "sigma";
+    const string epsil = "epsil";
+    const string mu = "mu";
+    const string phi = "phi";
+    const string H = "H";
+
+
     static const std::string const_data_value(
             "14 "
                     "AlCl                  51032.    318.9948      36.94626   -0.001226431  1.1881743       5.638541       -5.066135        5.219347    62.4345    3.58     932.   "
@@ -58,44 +82,26 @@ namespace consts {
             std::stringstream fin(const_data_value);
             int n;
             fin >> n;
-            std::string phi = "phi";
             for (int lp = 0; lp < n; lp++) {
                 std::string subst_name;
                 double value;
                 fin >> subst_name;
-                segal_consts.insert(std::make_pair(subst_name, std::map<std::string, double>()));
+                segal_consts[subst_name] = std::map<std::string, double>();
                 fin >> value;
-                segal_consts[subst_name].insert(make_pair(std::string("H"), value));
+                segal_consts[subst_name][H] = value;
                 for (int i = 1; i < 8; i++) {
                     fin >> value;
-                    segal_consts[subst_name].insert(make_pair(phi + std::to_string(i), value));
+                    segal_consts[subst_name][phi + std::to_string(i)] = value;
                 }
                 fin >> value;
-                segal_consts[subst_name].insert(make_pair(std::string("mu"), value));
+                segal_consts[subst_name][mu] = value;
                 fin >> value;
-                segal_consts[subst_name].insert(make_pair(std::string("sigma"), value));
+                segal_consts[subst_name][sigma] = value;
                 fin >> value;
-                segal_consts[subst_name].insert(make_pair(std::string("epsil"), value));
+                segal_consts[subst_name][epsil] = value;
             }
         }
     }
-
-    const string HCl = "HCl";
-    const string H2 = "H2";
-    const string N2 = "N2";
-    const string Al = "Al";
-    const string Ga = "Ga";
-    const string NH3 = "NH3";
-    const string AlN = "AlN";
-    const string GaN = "GaN";
-
-    const string AlCl = "AlCl";
-    const string AlCl2 = "AlCl2";
-    const string AlCl3 = "AlCl3";
-
-    const string GaCl =  "GaCl";
-    const string GaCl2 = "GaCl2";
-    const string GaCl3 = "GaCl3";
 
 
 
@@ -107,13 +113,14 @@ namespace consts {
             throw std::logic_error("unknown constant " + name);
         }
         auto cur = segal_consts.find(name)->second;
+
         double F = cur["phi1"]
                    + cur["phi2"] * log(x_on_temp(temp))
-                   + cur["phi3"] / std::pow(x_on_temp(temp), 2)
+                   + cur["phi3"] / pow(x_on_temp(temp), 2)
                    + cur["phi4"] / x_on_temp(temp)
                    + cur["phi5"] * x_on_temp(temp)
-                   + cur["phi6"] * std::pow(x_on_temp(temp), 2)
-                   + cur["phi7"] * std::pow(x_on_temp(temp), 3);
+                   + cur["phi6"] * pow(x_on_temp(temp), 2)
+                   + cur["phi7"] * pow(x_on_temp(temp), 3);
         return cur["H"] - F * temp;
     }
 
@@ -156,9 +163,6 @@ namespace consts {
         return exp(-delta_g / (R_kmol * temp)) / atmosphere_pressure;
     }
 
-    const string sigma = "sigma";
-    const string epsil = "epsil";
-    const string mu = "mu";
 
     inline double get_D(const std::string &name, int temp) {
         static std::map<std::string, std::map<std::string, double> > segal_consts;
@@ -167,10 +171,9 @@ namespace consts {
             throw std::logic_error("unknown constant " + name);
         }
         double ans = 0.02628 * std::pow(temp, 1.5) /
-                     (atmosphere_pressure
+                        (atmosphere_pressure
                       * ((segal_consts[name][sigma] + segal_consts[N2][sigma]) / 2)
-                      * (1.074 *
-                         std::pow(temp / std::pow(segal_consts[name][epsil] * segal_consts[N2][epsil], 0.5),
+                      * (1.074 * std::pow(temp / std::pow(segal_consts[name][epsil] * segal_consts[N2][epsil], 0.5),
                                   -0.1604))
                       * (std::pow((2 * segal_consts[name][mu] * segal_consts[N2][mu] /
                                    (segal_consts[name][mu] + segal_consts[N2][mu])), 0.5))
