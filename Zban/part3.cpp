@@ -104,23 +104,6 @@ void solve(vector<vector<double> > a, double delta, double T) {
         double K9 = consts::get_K(9, T);
         double K10 = consts::get_K(10, T);
         cerr << "K9 K10 " << (dbl)K9 << " " << (dbl)K10 << endl;
-        auto phi = [&](vector<double> xx) {
-            map<string, double> P_e;
-            double x = xx[5];
-            for (int i = 0; i < 5; i++) {
-                P_e[variables[i]] = xx[i];
-            }
-            vector<double> nx(6);
-            nx[0] = (D[HCl] * P_g[HCl] + 2 * D[H2] * (P_g[H2] - P_e[H2]) + 3 * D[NH3] * (P_g[NH3] - P_e[NH3])) / D[HCl];
-            nx[1] = (3 * D[AlCl3] * P_g[AlCl3] + D[GaCl] * (P_g[GaCl] - P_e[GaCl]) + D[HCl] * (P_g[HCl] - P_e[HCl])) / (3 * D[AlCl3]);
-            nx[2] = (D[AlCl3] * (P_g[AlCl3] - P_e[AlCl3]) * (1 - x) / x - D[GaCl] * P_g[GaCl]) / -D[GaCl];
-            nx[3] = (D[AlCl3] * (P_g[AlCl3] - P_e[AlCl3]) + D[GaCl] * (P_g[GaCl] - P_e[GaCl]) - D[NH3] * P_g[NH3]) / -D[NH3];
-            nx[4] = P_e[GaCl] * P_e[NH3] / (K10 * (1 - x) * P_e[HCl]);
-            nx[5] = P_e[AlCl3] * P_e[NH3] / (K9 * pow(P_e[HCl], 3));
-            nx[5] = min(nx[5], (double)0.99);
-            nx[5] = max(nx[5], (double)0.01);
-            return nx;
-        };
         auto F = [&](vector<double> xx) {
             map<string, double> P_e;
             double x = xx[5];
@@ -131,61 +114,60 @@ void solve(vector<vector<double> > a, double delta, double T) {
             nx[0] = D[HCl] * (P_g[HCl] - P_e[HCl]) + 2 * D[H2] * (P_g[H2] - P_e[H2]) + 3 * D[NH3] * (P_g[NH3] - P_e[NH3]);
             nx[1] = 3 * D[AlCl3] * (P_g[AlCl3] - P_e[AlCl3]) + D[GaCl] * (P_g[GaCl] - P_e[GaCl]) + D[HCl] * (P_g[HCl] - P_e[HCl]);
             nx[2] = D[AlCl3] * (P_g[AlCl3] - P_e[AlCl3]) * (1 - x) - D[GaCl] * (P_g[GaCl] - P_e[GaCl]) * x;
-            nx[3] = D[AlCl3] * (P_g[AlCl3] - P_e[AlCl3]) + D[GaCl] * (P_g[GaCl] - P_e[GaCl]) + D[HCl] * (P_g[HCl] - P_e[HCl]);
+            nx[3] = D[AlCl3] * (P_g[AlCl3] - P_e[AlCl3]) + D[GaCl] * (P_g[GaCl] - P_e[GaCl]) - D[NH3] * (P_g[NH3] - P_e[NH3]);
             nx[4] = P_e[GaCl] * P_e[NH3] - K10 * (1 - x) * P_e[HCl] * P_e[H2];
             nx[5] = P_e[AlCl3] * P_e[NH3] - K9 * x * pow(P_e[HCl], 3);
-            //nx[5] = min(nx[5], (double)0.99);
-            //nx[5] = max(nx[5], (double)0.01);
+//            nx[5] = min(nx[5], (double)1);
+//            nx[5] = max(nx[5], (double)0);
             return nx;
         };
         vector<double> cx(6, 1.0);
         for (int i = 0; i < 5; i++) cx[i] = max(P_g[variables[i]] + 1.0, (double)1.0);
         cx[5] = 0.5;
-
-        /*int iters = 1;
-        print(cx);
-        for (;; iters++) {
-            if (iters > 1000) {
-                cerr << iters << " iters already, are you sure that everything is OK?.." << endl;
-            }
-            vector<double> nx = phi(cx);
-            print(nx);
-            cerr << endl;
-            double mx = 0.0;
-            for (int i = 0; i < 6; i++) {
-                mx = max(mx, fabs(cx[i] - nx[i]));
-            }
-            if (mx < 1e-20) break;
-            cx = nx;
-        }*/
+        //cx.assign(6, 1.0);
+        //cx[5] = x_g;
+        //cx[0] = 10;
+        //cx[3] = 1000;
+        cx[0] = 19.269117954186658;
+        cx[1] = 4.5960254796512426E-8;
+        cx[2] = 11.559631023363089;
+        cx[3] = 1489.378322244069;
+        cx[4] = 9849.572521125578;
+        cx[5] = 0.308603454760525;
 
         int n = 6;
         int iters = 1;
         print(cx);
+//const string variables[] = { HCl, AlCl3, GaCl, NH3, H2, x };
         for (;; iters++) {
-            vector<vector<double> > w(n, vector<double>(n));
-            for (int j = 0; j < n; j++) {
-                double dx = 1e-10;
-                vector<double> xx = cx;
-                xx[j] += dx;
-                vector<double> rx = F(xx);
-                for (int i = 0; i < n; i++) {
-                    w[i][j] = (rx[i] - cx[i]) / dx;
-                }
+            map<string, double> P_e;
+            double x = cx[5];
+            for (int i = 0; i < 5; i++) {
+                P_e[variables[i]] = cx[i];
             }
+            vector<vector<double> > w(n, vector<double>(n, 0.0));
+            w[0][0] = -D[HCl]; w[0][4] = -2 * D[H2]; w[0][3] = -3 * D[NH3];
+            w[1][1] = -3 * D[AlCl3]; w[1][2] = -D[GaCl]; w[1][0] = -D[HCl];
+            w[2][1] = -D[AlCl3] * (1 - x); w[2][2] = D[GaCl] * x; w[2][5] = -D[AlCl3] * (P_g[AlCl3] - P_e[AlCl3]) - D[GaCl] * (P_g[GaCl] - P_e[GaCl]);
+            w[3][1] = -D[AlCl3]; w[3][2] = -D[GaCl]; w[3][3] = D[NH3];
+            w[4][2] = P_e[NH3]; w[4][3] = P_e[GaCl]; w[4][5] = -K10 * -P_e[HCl] * P_e[H2]; w[4][0] = -K10 * (1 - x) * P_e[H2]; w[4][4] = -K10 * (1 - x) * P_e[HCl];
+            w[5][1] = P_e[NH3]; w[5][3] = P_e[AlCl3]; w[5][5] = -K9 * pow(P_e[HCl], 3); w[5][0] = -K9 * x * 3 * pow(P_e[HCl], 2);
+
+            
             vector<double> rx = F(cx);
             for (int i = 0; i < n ;i++) {
                 w[i].push_back(-rx[i]);
             }
-            print(w);
+            //print(w);
             vector<double> dx = gauss(w);
             double mx = 0.0;
             for (int i = 0; i < n; i++) {
                 cx[i] += dx[i];
                 mx = max(mx, fabs(dx[i]));
             }
+            //cx[5] = max(cx[5], (double)0); cx[5] = min(cx[5], (double)1);
             print(cx);
-            if (mx < 1e-4) break;
+            if (mx < 1e-9) break;
         }
         cerr << "x^g " << (dbl)x_g << " simple iterations finished with " << iters << " iterations" << endl;
         double x = cx[5];
