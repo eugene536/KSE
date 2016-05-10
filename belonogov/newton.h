@@ -16,6 +16,8 @@ namespace parts_1_2 {
     struct Expression {
         virtual double value(vector < double > point) = 0;
         virtual double derivative(vector < double > point, int id) = 0;
+
+        virtual ~Expression() { }
     };
 
     struct Addition : Expression {

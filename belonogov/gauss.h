@@ -14,9 +14,30 @@ using namespace std;
 
 namespace parts_1_2 {
 
+    inline void printMat(vector < vector < double > > data) {
+        int n = data.size();
+        cerr.precision(3);
+        cerr << fixed;
+        cerr << "==================\n";
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                double x = data[i][j];
+                if (abs(x) < 1e-9)
+                    x = 0;
+                cerr << x << " ";
+            }
+            cerr << ": " << data[i][n] << endl;
+        }
+        cerr << "==================\n";
+    }
+
+
+
     inline vector<double> gauss(vector<vector<double> > data) {
         int n = data.size();
         assert((int) data[0].size() == n + 1);
+        printMat(data);
+        exit(0);
         for (int i = 0; i < n; i++) {
             int cur = i;
             for (int j = i; j < n; j++)
