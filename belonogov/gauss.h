@@ -16,7 +16,7 @@ namespace parts_1_2 {
 
     inline void printMat(vector < vector < double > > data) {
         int n = data.size();
-        cerr.precision(3);
+        cerr.precision(17);
         cerr << fixed;
         cerr << "==================\n";
         for (int i = 0; i < n; i++) {
@@ -36,8 +36,8 @@ namespace parts_1_2 {
     inline vector<double> gauss(vector<vector<double> > data) {
         int n = data.size();
         assert((int) data[0].size() == n + 1);
-        printMat(data);
-        exit(0);
+        //printMat(data);
+        //exit(0);
         for (int i = 0; i < n; i++) {
             int cur = i;
             for (int j = i; j < n; j++)

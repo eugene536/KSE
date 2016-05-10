@@ -8,6 +8,7 @@
 #include <vector>
 #include <memory>
 #include "gauss.h"
+#include "main.h"
 
 using namespace std;
 
@@ -58,13 +59,14 @@ namespace parts_1_2 {
         double cof;
         int deg, varId;
 
-
         Variable(double cof, int deg, int varId) : cof(cof), deg(deg), varId(varId) { }
 
         double value(vector < double > point) override {
             double res = 1;
-            for (int i = 0; i < deg; i++)
+            for (int i = 0; i < deg; i++) {
+                assert(varId != -1);
                 res *= point[varId];
+            }
             return res * cof;
         }
 
@@ -79,9 +81,10 @@ namespace parts_1_2 {
     };
 
 
-    vector < double > newton(vector < double > point, vector < shared_ptr < Expression > > f) {
+    inline vector < double > newton(vector < double > point, vector < shared_ptr < Expression > > f) {
         int n = point.size();
 
+        bool converge = 0;
         for (int it = 0; it < 100; it++) {
             vector < vector < double > > data(n, vector < double > (n + 1));
             for (int i = 0; i < n; i++) {
@@ -92,8 +95,27 @@ namespace parts_1_2 {
                     data[i][n] += der * point[j];
                 }
             }
+            auto prev = point;
             point = gauss(data);
+            double mxDiff = 0;
+            double mx = point[0];
+            for (int i = 0; i < (int)point.size(); i++)
+                mxDiff = max(abs(point[i] - prev[i]), mxDiff);
+            for (auto x: point)
+                mx = max(mx, x);
+
+            if (mxDiff < max(1.0, abs(mx)) * 1e-6) {
+                converge = 1;
+                db("Converge");
+                break;
+            }
+            /*db3(it, mxDiff, mx);
+            for (auto x: point)
+                cerr << x << " ";
+            cerr << endl;*/
         }
+        if (!converge)
+            db("NOT Converge");
         return point;
     }
 }

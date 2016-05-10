@@ -118,23 +118,11 @@ inline double get_K(int number, int temp) {
         case 6:
             delta_g = 2*get_g("Ga", temp)   + 6*get_g("HCl", temp)  - 2*get_g("GaCl3", temp)- 3*get_g("H2", temp);
             break;                
-        case 7:
-            delta_g = 1*get_g("AlCl", temp)   + 1*get_g("NH3", temp)  - 1*get_g("AlN", temp) - 1*get_g("HCl", temp) - 1*get_g("H2", temp);
-            break;                
-        case 8:
-            delta_g = 2*get_g("AlCl2", temp)  + 2*get_g("NH3", temp)  - 2*get_g("AlN", temp) - 4*get_g("HCl", temp) - 1*get_g("H2", temp);
-            break;                
         case 9:
             delta_g = 1*get_g("AlCl3", temp)  + 1*get_g("NH3", temp)  - 1*get_g("AlN", temp) - 3*get_g("HCl", temp) - 0*get_g("H2", temp);
             break;                
         case 10:
             delta_g = 1*get_g("GaCl", temp)   + 1*get_g("NH3", temp)  - 1*get_g("GaN", temp) - 1*get_g("HCl", temp) - 1*get_g("H2", temp);
-            break;                
-        case 11:
-            delta_g = 2*get_g("GaCl2", temp)  + 2*get_g("NH3", temp)  - 2*get_g("GaN", temp) - 4*get_g("HCl", temp) - 1*get_g("H2", temp);
-            break;                
-        case 12:
-            delta_g = 1*get_g("GaCl3", temp)  + 1*get_g("NH3", temp)  - 1*get_g("GaN", temp) - 3*get_g("HCl", temp) - 0*get_g("H2", temp);
             break;                
     };
     return exp(-delta_g/(R_kmol*temp)) / atmosphere_pressure;
