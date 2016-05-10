@@ -220,7 +220,8 @@ void solve(vector<vector<double> > a, double delta, double T) {
         for (int i = 0; i < (int)it.second.size(); i++) {
             cout << (dbl)it.second[i] << " \n"[i + 1 == (int)it.second.size()];
         }
-        
+        cout << "part " << ttest << ": G[" << it.first << "]" << endl;
+
    }
 }
 

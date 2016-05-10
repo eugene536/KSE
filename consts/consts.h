@@ -195,6 +195,12 @@ namespace consts {
         return ans;
     }
 
+    inline double get_mu(const string &name, double temp) {
+        static map<string, map<string, double> > segal_consts;
+        update_map(segal_consts);
+        return segal_consts[name][mu];
+    }
+
 }
 
 #endif
