@@ -41,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="consts.h" pinned="false" current-in-tab="false">
+      <file leaf-file-name="consts.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../consts/consts.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="132" column="28" selection-start-line="132" selection-start-column="28" selection-end-line="132" selection-end-column="28" />
+            <state relative-caret-position="305">
+              <caret line="170" column="35" selection-start-line="170" selection-start-column="35" selection-end-line="170" selection-end-column="35" />
               <folding>
                 <element signature="e#37#53#0" expanded="true" />
               </folding>
@@ -56,8 +56,8 @@
       <file leaf-file-name="gauss.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gauss.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+            <state relative-caret-position="195">
+              <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
               <folding>
                 <element signature="e#93#110#0" expanded="true" />
               </folding>
@@ -75,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="210">
+              <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -90,22 +90,10 @@
       <file leaf-file-name="newton.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newton.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-634">
+            <state relative-caret-position="-616">
               <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
               <folding>
                 <element signature="e#95#112#0" expanded="true" />
-                <marker date="1462868335358" expanded="true" signature="211:3494" placeholder="{...}" />
-                <marker date="1462868335358" expanded="true" signature="236:409" placeholder="{...}" />
-                <marker date="1462868335358" expanded="true" signature="445:974" placeholder="{...}" />
-                <marker date="1462868335358" expanded="true" signature="625:757" placeholder="{...}" />
-                <marker date="1462868335358" expanded="true" signature="827:968" placeholder="{...}" />
-                <marker date="1462868335358" expanded="true" signature="1015:1481" placeholder="{...}" />
-                <marker date="1462868335358" expanded="true" signature="1221:1286" placeholder="{...}" />
-                <marker date="1462868335358" expanded="true" signature="1356:1475" placeholder="{...}" />
-                <marker date="1462868335358" expanded="true" signature="1517:2198" placeholder="{...}" />
-                <marker date="1462868335358" expanded="true" signature="1708:1909" placeholder="{...}" />
-                <marker date="1462868335358" expanded="true" signature="1979:2192" placeholder="{...}" />
-                <marker date="1462868335358" expanded="true" signature="2303:3492" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -114,20 +102,9 @@
       <file leaf-file-name="solver_1_2.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solver_1_2.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-180">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-              <folding>
-                <marker date="1462869016622" expanded="true" signature="0:38" placeholder="//..." />
-                <marker date="1462869016622" expanded="true" signature="113:192" placeholder="..." />
-                <marker date="1462869016622" expanded="true" signature="218:295" placeholder="..." />
-                <marker date="1462869016622" expanded="true" signature="341:6792" placeholder="{...}" />
-                <marker date="1462869016622" expanded="true" signature="385:427" placeholder="{...}" />
-                <marker date="1462869016622" expanded="true" signature="447:6789" placeholder="{...}" />
-                <marker date="1462869016622" expanded="true" signature="610:685" placeholder="{...}" />
-                <marker date="1462869016622" expanded="true" signature="755:837" placeholder="{...}" />
-                <marker date="1462869016622" expanded="true" signature="884:6302" placeholder="{...}" />
-                <marker date="1462869016622" expanded="true" signature="6452:6783" placeholder="{...}" />
-              </folding>
+            <state relative-caret-position="195">
+              <caret line="62" column="36" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -138,12 +115,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/main.h" />
-        <option value="$PROJECT_DIR$/gauss.h" />
         <option value="$PROJECT_DIR$/solver_1_2.h" />
         <option value="$PROJECT_DIR$/newton.h" />
-        <option value="$PROJECT_DIR$/../consts/consts.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/gauss.h" />
+        <option value="$PROJECT_DIR$/../consts/consts.h" />
       </list>
     </option>
   </component>
@@ -387,13 +364,13 @@
     <frame x="0" y="-4" width="1366" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47424242" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40454546" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32419354" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30472103" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37096775" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34032258" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -502,18 +479,6 @@
           <caret line="93" column="35" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
           <folding>
             <element signature="e#95#112#0" expanded="true" />
-            <marker date="1462868335358" expanded="true" signature="211:3494" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="236:409" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="445:974" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="625:757" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="827:968" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1015:1481" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1221:1286" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1356:1475" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1517:2198" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1708:1909" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1979:2192" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="2303:3492" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -522,18 +487,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2265">
           <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
-          <folding>
-            <marker date="1462869016622" expanded="true" signature="0:38" placeholder="//..." />
-            <marker date="1462869016622" expanded="true" signature="113:192" placeholder="..." />
-            <marker date="1462869016622" expanded="true" signature="218:295" placeholder="..." />
-            <marker date="1462869016622" expanded="true" signature="341:6792" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="385:427" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="447:6789" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="610:685" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="755:837" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="884:6302" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="6452:6783" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -589,18 +543,6 @@
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="e#95#112#0" expanded="true" />
-            <marker date="1462868335358" expanded="true" signature="211:3494" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="236:409" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="445:974" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="625:757" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="827:968" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1015:1481" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1221:1286" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1356:1475" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1517:2198" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1708:1909" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1979:2192" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="2303:3492" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -609,18 +551,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1462869016622" expanded="true" signature="0:38" placeholder="//..." />
-            <marker date="1462869016622" expanded="true" signature="113:192" placeholder="..." />
-            <marker date="1462869016622" expanded="true" signature="218:295" placeholder="..." />
-            <marker date="1462869016622" expanded="true" signature="341:6792" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="385:427" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="447:6789" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="610:685" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="755:837" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="884:6302" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="6452:6783" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -628,75 +559,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2280">
           <caret line="173" column="2" selection-start-line="173" selection-start-column="2" selection-end-line="173" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/solver_1_2.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-180">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <marker date="1462869016622" expanded="true" signature="0:38" placeholder="//..." />
-            <marker date="1462869016622" expanded="true" signature="113:192" placeholder="..." />
-            <marker date="1462869016622" expanded="true" signature="218:295" placeholder="..." />
-            <marker date="1462869016622" expanded="true" signature="341:6792" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="385:427" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="447:6789" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="610:685" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="755:837" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="884:6302" placeholder="{...}" />
-            <marker date="1462869016622" expanded="true" signature="6452:6783" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gauss.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding>
-            <element signature="e#93#110#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/newton.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-634">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-          <folding>
-            <element signature="e#95#112#0" expanded="true" />
-            <marker date="1462868335358" expanded="true" signature="211:3494" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="236:409" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="445:974" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="625:757" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="827:968" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1015:1481" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1221:1286" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1356:1475" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1517:2198" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1708:1909" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="1979:2192" placeholder="{...}" />
-            <marker date="1462868335358" expanded="true" signature="2303:3492" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../consts/consts.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="132" column="28" selection-start-line="132" selection-start-column="28" selection-end-line="132" selection-end-column="28" />
-          <folding>
-            <element signature="e#37#53#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -710,10 +572,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="210">
+          <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gauss.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
+          <folding>
+            <element signature="e#93#110#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solver_1_2.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="62" column="36" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newton.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-616">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+          <folding>
+            <element signature="e#95#112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../consts/consts.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="170" column="35" selection-start-line="170" selection-start-column="35" selection-end-line="170" selection-end-column="35" />
+          <folding>
+            <element signature="e#37#53#0" expanded="true" />
           </folding>
         </state>
       </provider>
