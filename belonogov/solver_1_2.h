@@ -156,6 +156,8 @@ namespace parts_1_2 {
             curTemp = temp;
         }
 
+        // ex: get("Al", "AlCl2", 30);
+        //     get("Al", "V", 30);
         double get(string type, string name, double temp) {
             if (type != "Al" && type != "Ga")
                 throw logic_error("expected Al or Ga found: " + type);

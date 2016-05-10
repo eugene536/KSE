@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include <stdlib.h>
+#include "../belonogov/solver_1_2.h"
 
 using namespace std;
 
