@@ -16,4 +16,5 @@ xs = map(int, sys.stdin.readline().split())
 ys = map(float, sys.stdin.readline().split())
 plt.plot(xs, ys)
 
-plt.show()
+plt.savefig(args.yName + ".png")
+#plt.show()
