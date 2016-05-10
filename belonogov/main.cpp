@@ -15,6 +15,8 @@ int main() {
         cout << solver.get("Al", "AlCl2", 823) << endl;
         cout << solver.get("Al", "AlCl3", 823) << endl;
 
+
+
     }
     else {
 

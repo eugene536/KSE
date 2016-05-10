@@ -138,7 +138,7 @@ inline double get_D(const std::string& name, int temp) {
         (atmosphere_pressure 
          * ((segal_consts[name]["sigma"] + segal_consts["N2"]["sigma"]) / 2)
          * (1.074 * std::pow(temp /  std::pow(segal_consts[name]["epsil"] * segal_consts["N2"]["epsil"], 0.5), -0.1604))
-         * (std::pow(2 * segal_consts[name]["mu"] * segal_consts["N2"]["mu"] / (segal_consts[name]["mu"] + segal_consts["N2"]["mu"])), 0.5)
+         * (std::pow((2 * segal_consts[name]["mu"] * segal_consts["N2"]["mu"] / (segal_consts[name]["mu"] + segal_consts["N2"]["mu"])), 0.5))
         );
     return ans;
 }
