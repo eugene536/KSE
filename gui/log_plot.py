@@ -12,7 +12,7 @@ args = parser.parse_args()
 plt.ylabel(args.yName)
 plt.xlabel(args.xName)
 
-xs = map(int, sys.stdin.readline().split())
+xs = map(float, sys.stdin.readline().split())
 ys = map(float, sys.stdin.readline().split())
 plt.plot(xs, ys)
 
