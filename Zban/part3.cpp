@@ -78,8 +78,11 @@ const string variables[] = { HCl, AlCl3, GaCl, NH3, H2, x };
 // 16, 17, 19, 18, 15, 14
 
 
+int ttest = 0;
 int test = 0;
 void solve(vector<vector<double> > a, double delta, double T) {
+    ttest++;
+    test = 0;
     a.push_back(f({{HCl, 1.0}}));
     a.push_back(f({{AlCl3, 1.0}, {GaCl, 1.0}, {"", 30.0}}));
     a.push_back(f({{NH3, 1.0}, {"", 1500}}));
@@ -192,7 +195,8 @@ void solve(vector<vector<double> > a, double delta, double T) {
         res_valgan.push_back(val);
     }
 
-    freopen(("out" + inttostr(++test)).c_str(), "w", stdout);
+    string out = "out" + inttostr(ttest);
+    freopen((out + inttostr(++test)).c_str(), "w", stdout);
     for (int i = 0; i < (int)res_x_g.size(); i++) {
         cout << (dbl)res_x_g[i] << " \n"[i + 1 == (int)res_x_g.size()];
     }
@@ -200,7 +204,7 @@ void solve(vector<vector<double> > a, double delta, double T) {
         cout << (dbl)res_x[i] << " \n"[i + 1 == (int)res_x.size()];
     }
 
-    freopen(("out" + inttostr(++test)).c_str(), "w", stdout);
+    freopen((out + inttostr(++test)).c_str(), "w", stdout);
     for (int i = 0; i < (int)res_x_g.size(); i++) {
         cout << (dbl)res_x_g[i] << " \n"[i + 1 == (int)res_x_g.size()];
     }
@@ -208,7 +212,16 @@ void solve(vector<vector<double> > a, double delta, double T) {
         cout << (dbl)res_valgan[i] << " \n"[i + 1 == (int)res_x.size()];
     }
 
-
+    for (auto it : res_G) {
+        freopen((out + inttostr(++test)).c_str(), "w", stdout);
+        for (int i = 0; i < (int)res_x_g.size(); i++) {
+            cout << (dbl)res_x_g[i] << " \n"[i + 1 == (int)res_x_g.size()];
+        }
+        for (int i = 0; i < (int)it.second.size(); i++) {
+            cout << (dbl)it.second[i] << " \n"[i + 1 == (int)it.second.size()];
+        }
+        
+   }
 }
 
 
