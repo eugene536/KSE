@@ -101,7 +101,7 @@ inline double get_K(int number, int temp) {
     double delta_g = 0;
     switch (number) {
         case 1:
-            delta_g = 2*get_g("Al", temp)   + 2*get_g("HCl", temp)  - 2*get_g("AlCl", temp) - 1*get_g("H2", temp);
+            delta_g = 2*get_g("Al", temp)   + 2* get_g("HCl", temp)  - 2 * get_g("AlCl", temp) - 1*get_g("H2", temp);
             break;                
         case 2:                   
             delta_g = 1*get_g("Al", temp)   + 2*get_g("HCl", temp)  - 1*get_g("AlCl2", temp)- 1*get_g("H2", temp);
@@ -138,7 +138,7 @@ inline double get_D(const std::string& name, int temp) {
         (atmosphere_pressure 
          * ((segal_consts[name]["sigma"] + segal_consts["N2"]["sigma"]) / 2)
          * (1.074 * std::pow(temp /  std::pow(segal_consts[name]["epsil"] * segal_consts["N2"]["epsil"], 0.5), -0.1604))
-         * (2 * segal_consts[name]["mu"] * segal_consts["N2"]["mu"] / (segal_consts[name]["mu"] + segal_consts["N2"]["mu"]))
+         * (std::pow(2 * segal_consts[name]["mu"] * segal_consts["N2"]["mu"] / (segal_consts[name]["mu"] + segal_consts["N2"]["mu"])), 0.5)
         );
     return ans;
 }
