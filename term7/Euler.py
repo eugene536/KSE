@@ -1,7 +1,7 @@
 from Constants import *
 
 ITERATIONS = 1000
-MAX_T = 30
+
 
 def solve(x0, y0, z0, r):
     print "started euler"

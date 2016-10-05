@@ -7,7 +7,8 @@ import time
 
 import Euler
 import Plots
-
+import Adams
+import RungeKutta
 root = Tk()
 
 btn1 = Button(root, text="явный Эйлер")
@@ -50,6 +51,7 @@ def getStartPoint():
 
 def makeWork(algorithm):
     def work(*_):
+        print("1")
         nlast = time.clock()
         if (nlast - work.last < 0.2): return
         work.last = nlast
@@ -57,16 +59,22 @@ def makeWork(algorithm):
     work.last = time.clock()
     return work
 
-currentAlgorithm = [Euler.solve]
+currentAlgorithm = Euler.solve
 
 def makeCurrentAlgorithm(algorithm):
     def work(*_):
-        currentAlgorithm[0] = algorithm
+        global currentAlgorithm
+        currentAlgorithm = algorithm
+        makeWork(algorithm)
     return work
 
 btn1.config(command=makeCurrentAlgorithm(Euler.solve))
-scl1.config(command=makeWork(currentAlgorithm[0]))
-scl2.config(command=makeWork(currentAlgorithm[0]))
-scl3.config(command=makeWork(currentAlgorithm[0]))
-scl4.config(command=makeWork(currentAlgorithm[0]))
+btn1.config(command=makeCurrentAlgorithm(Euler.solve))
+btn1.config(command=makeCurrentAlgorithm(RungeKutta.rungeKutta))
+btn1.config(command=makeCurrentAlgorithm(Adams.adams))
+
+scl1.config(command=makeWork(currentAlgorithm))
+scl2.config(command=makeWork(currentAlgorithm))
+scl3.config(command=makeWork(currentAlgorithm))
+scl4.config(command=makeWork(currentAlgorithm))
 root.mainloop()
