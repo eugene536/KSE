@@ -2,6 +2,9 @@
 import matplotlib.pyplot as plt
 
 from Tkinter import *
+
+import time
+
 import Euler
 import Plots
 
@@ -18,25 +21,25 @@ btn4.grid(row = 1, column = 4)
 
 lbl1 = Label(root, text="x0")
 lbl1.grid(row = 2, column = 1)
-scl1 = Scale(root, from_=0, to=10, resolution=1)
+scl1 = Scale(root, from_=0, to=10, resolution=0.1)
 scl1.set(1)
 scl1.grid(row = 2, column = 2)
 
 lbl2 = Label(root, text="y0")
 lbl2.grid(row = 3, column = 1)
-scl2 = Scale(root, from_=0, to=10, resolution=1)
+scl2 = Scale(root, from_=0, to=10, resolution=0.1)
 scl2.set(2)
 scl2.grid(row = 3, column = 2)
 
 lbl3 = Label(root, text="z0")
 lbl3.grid(row = 4, column = 1)
-scl3 = Scale(root, from_=0, to=10, resolution=1)
+scl3 = Scale(root, from_=0, to=10, resolution=0.1)
 scl3.set(3)
 scl3.grid(row = 4, column = 2)
 
 lbl4 = Label(root, text="r")
 lbl4.grid(row = 5, column = 1)
-scl4 = Scale(root, from_=0, to=10, resolution=1)
+scl4 = Scale(root, from_=0, to=10, resolution=0.1)
 scl4.set(4)
 scl4.grid(row = 5, column = 2)
 
@@ -44,15 +47,26 @@ def getStartPoint():
     print "getting start point"
     return scl1.get(), scl2.get(), scl3.get(), scl4.get()
 
+
 def makeWork(algorithm):
     def work(*_):
+        nlast = time.clock()
+        if (nlast - work.last < 0.2): return
+        work.last = nlast
         Plots.drawPlots(algorithm(scl1.get(), scl2.get(), scl3.get(), scl4.get()))
+    work.last = time.clock()
     return work
 
+currentAlgorithm = [Euler.solve]
 
-btn1.config(command=makeWork(Euler.solve))
-scl1.config(command=makeWork(Euler.solve))
-#scl2.config(command=makeWork(Euler.solve))
-#scl3.config(command=makeWork(Euler.solve))
-#scl4.config(command=makeWork(Euler.solve))
+def makeCurrentAlgorithm(algorithm):
+    def work(*_):
+        currentAlgorithm[0] = algorithm
+    return work
+
+btn1.config(command=makeCurrentAlgorithm(Euler.solve))
+scl1.config(command=makeWork(currentAlgorithm[0]))
+scl2.config(command=makeWork(currentAlgorithm[0]))
+scl3.config(command=makeWork(currentAlgorithm[0]))
+scl4.config(command=makeWork(currentAlgorithm[0]))
 root.mainloop()
