@@ -4,6 +4,7 @@ ITERATIONS = 1000
 MAX_T = 30
 
 def solve(x0, y0, z0, r):
+    print "started euler"
     ans = [[x0, y0, z0, 0]]
 
     dt = MAX_T * 1.0 / ITERATIONS
@@ -16,4 +17,5 @@ def solve(x0, y0, z0, r):
         ans.append([x1, y1, z1, t])
         x0, y0, z0 = x1, y1, z1
 
+    print "ended euler"
     return ans

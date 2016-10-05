@@ -8,11 +8,13 @@ import Plots
 root = Tk()
 
 btn1 = Button(root, text="явный Эйлер")
-def f():
-    print 1
-#btn1.config(command=f)
 btn1.grid(row = 1, column = 1)
-
+btn2 = Button(root, text="неявный Эйлер")
+btn2.grid(row = 1, column = 2)
+btn3 = Button(root, text="рунге-кутт")
+btn3.grid(row = 1, column = 3)
+btn4 = Button(root, text="адамс")
+btn4.grid(row = 1, column = 4)
 
 lbl1 = Label(root, text="x0")
 lbl1.grid(row = 2, column = 1)
@@ -40,17 +42,15 @@ scl4.set(4)
 scl4.grid(row = 5, column = 2)
 
 def getStartPoint():
+    print "getting start point"
     return scl1.get(), scl2.get(), scl3.get(), scl4.get()
 
-btn1.config(command=Plots.drawPlots(Euler.solve(*getStartPoint())))
-
-btn2 = Button(root, text="неявный Эйлер")
-btn2.grid(row = 1, column = 2)
-btn3 = Button(root, text="рунге-кутт")
-btn3.grid(row = 1, column = 3)
-btn4 = Button(root, text="адамс")
-btn4.grid(row = 1, column = 4)
+def makeWork(algorithm):
+    def work():
+        Plots.drawPlots(algorithm(scl1.get(), scl2.get(), scl3.get(), scl4.get()))
+    return work
 
 
+btn1.config(command=makeWork(Euler.solve))
 
 root.mainloop()
