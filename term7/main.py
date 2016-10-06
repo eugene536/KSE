@@ -18,6 +18,7 @@ sys.setrecursionlimit(3500)
 
 root = Tk()
 
+
 btn1 = Button(root, text="Эйлера явный")
 btn1.grid(row = 1, column = 1)
 btn2 = Button(root, text="Эйлера неявный")
