@@ -5,8 +5,9 @@ from Constants import h
 
 
 def adams(x0, y0, z0, r):
+    print("Hello from Adams")
     p = np.array([x0, y0, z0])
-    ITER = round(MAX_T / h)
+    ITER = int(round(MAX_T / h))
     tmr = 0
     history=[]
     for i in range(0, ITER):

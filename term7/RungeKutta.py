@@ -13,10 +13,11 @@ def rungeKuttaStep(p, h, r):
 
 
 def rungeKutta(x0, y0, z0, r):
+    print("Hello from RungeKutta")
     p = np.array([x0, y0, z0])
     tmr = 0
     history=[]
-    ITER = round(MAX_T / h)
+    ITER = int(round(MAX_T / h))
     for i in range(0, ITER):
         history.append(p.tolist() + [tmr])
         p = rungeKuttaStep(p, h, r)

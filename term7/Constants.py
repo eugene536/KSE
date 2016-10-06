@@ -1,7 +1,9 @@
+import numpy as np
+
 MAX_T = 30
 sigma = 10
 b = 8.0 / 3
-h = 0.01
+h = 0.001
 
 def dx(x, y, z, r):
     return -sigma * x + sigma * y
