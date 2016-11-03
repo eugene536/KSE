@@ -63,9 +63,11 @@ lastUpdate = 0
 
 plotsType=0
 
+currentAlgorithm = Euler.solve
 
-def makeWork(algorithm):
+def makeWork():
     def work(*_):
+        global currentAlgorithm
         # print("in Work!!")
         global lastUpdate
         nlast = int(round(time.time() * 1000))
@@ -73,14 +75,13 @@ def makeWork(algorithm):
         lastUpdate = nlast
         print ("x y z r: ", scl1.get(), scl2.get(), scl3.get(), scl4.get())
         if plotsType == 0:
-            Plots.drawPlots(algorithm(scl1.get(), scl2.get(), scl3.get(), scl4.get()))
+            Plots.drawPlots(currentAlgorithm(scl1.get(), scl2.get(), scl3.get(), scl4.get()))
         else:
-            Plots3d.drawPlots(algorithm(scl1.get(), scl2.get(), scl3.get(), scl4.get()))
+            Plots3d.drawPlots(currentAlgorithm(scl1.get(), scl2.get(), scl3.get(), scl4.get()))
 
 
     return work
 
-currentAlgorithm = Euler.solve
 
 def makeCurrentAlgorithm(algorithm):
     def work(*_):
@@ -88,7 +89,7 @@ def makeCurrentAlgorithm(algorithm):
         global currentAlgorithm
         print("change")
         currentAlgorithm = algorithm
-        makeWork(algorithm)()
+        makeWork()()
     return work
 
 def test():
@@ -98,7 +99,7 @@ def switcher():
     global plotsType
     plotsType = 1 - plotsType
 
-    makeWork(currentAlgorithm)()
+    makeWork()()
 
 btn1.config(command=makeCurrentAlgorithm(Euler.solve))
 btn2.config(command=makeCurrentAlgorithm(ImplicitEuler.solve))
@@ -109,10 +110,10 @@ btnSwitch.config(command=switcher)
 
 # btn4.config(command=test)
 
-scl1.config(command=makeWork(currentAlgorithm))
-scl2.config(command=makeWork(currentAlgorithm))
-scl3.config(command=makeWork(currentAlgorithm))
-scl4.config(command=makeWork(currentAlgorithm))
+scl1.config(command=makeWork())
+scl2.config(command=makeWork())
+scl3.config(command=makeWork())
+scl4.config(command=makeWork())
 
 
 # print(time.clock())
