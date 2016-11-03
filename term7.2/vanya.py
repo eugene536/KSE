@@ -75,3 +75,89 @@ def ExplicitLeftAlgo(maxX, dx, maxT, dt, u, kapa, initAlgo):
         answer.append(curRes)
         curT += dt
     return answer
+
+
+def solveTriangMatrix(data):
+    n = len(data)
+    for i in range(0, n - 1):
+        assert (abs(data[i][0]) < 1e-5)
+        cof = data[i + 1][0] / data[i][1]
+        data[i + 1][0] -= data[i][1] * cof
+        data[i + 1][1] -= data[i][2] * cof
+        data[i + 1][3] -= data[i][3] * cof
+
+    answer = [0] * n
+
+    answer[-1] = data[-1][3] / data[-1][1]
+    for i in range(n - 2, -1, -1):
+        answer[i] = (data[i][3] - answer[i + 1] * data[i][2]) / data[i][1]
+
+    return answer
+
+
+def ImplicitRightAlgo(maxX, dx, maxT, dt, u, kapa, initAlgo):
+    init = initAlgo(maxX, dx)
+    answer = []
+    answer.append(init)
+    curT = dt
+    l = len(init)
+    while (curT <= maxT):
+        print("curT", curT)
+        #         curRes = [0] * len(init)
+        #         curRes[0] = answer[-1][0]
+        #         curRes[-1] = answer[-1][-1]
+
+        matrix = [0] * l
+        for i in range(0, l):
+            matrix[i] = [0] * 4
+
+        matrix[0][1] = 1
+        matrix[0][3] = answer[-1][0]
+
+        matrix[-1][1] = 1
+        matrix[-1][3] = answer[-1][-1]
+        for k in range(1, l - 1):
+            D = answer[-1][k] / dt
+            A = -kapa * dx / dx
+            B = 1 / dt - u / dx + 2 * kapa / dx / dx
+            C = u / dx - kapa / dx / dx
+            matrix[k] = [A, B, C, D]
+        # print(matrix)
+        answer.append(solveTriangMatrix(matrix))
+        curT += dt
+
+    return answer
+
+
+def ImplicitLeftAlgo(maxX, dx, maxT, dt, u, kapa, initAlgo):
+    init = initAlgo(maxX, dx)
+    answer = []
+    answer.append(init)
+    curT = dt
+    l = len(init)
+    while (curT <= maxT):
+        print("curT", curT)
+        #         curRes = [0] * len(init)
+        #         curRes[0] = answer[-1][0]
+        #         curRes[-1] = answer[-1][-1]
+
+        matrix = [0] * l
+        for i in range(0, l):
+            matrix[i] = [0] * 4
+
+        matrix[0][1] = 1
+        matrix[0][3] = answer[-1][0]
+
+        matrix[-1][1] = 1
+        matrix[-1][3] = answer[-1][-1]
+        for k in range(1, l - 1):
+            D = answer[-1][k] / dt
+            A = -kapa * dx / dx - u / dx
+            B = 1 / dt + u / dx + 2 * kapa / dx / dx
+            C = - kapa / dx / dx
+            matrix[k] = [A, B, C, D]
+        # print(matrix)
+        answer.append(solveTriangMatrix(matrix))
+        curT += dt
+
+    return answer
