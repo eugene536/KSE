@@ -16,8 +16,6 @@ root = Tk()
 
 graph_x = []
 graph_T = []
-plot_x = createAx()
-plot_t = createAx()
 xs = []
 
 cur_t = 0
@@ -41,6 +39,23 @@ def currentAlgorithm_(*_, **__):
     xs = [1, 2, 3, 4, 5]
     return graph_x
 
+def draw():
+    tm = scl_time.get()
+
+    xs = list(drange(0, H, 0.5))
+    graph_x = list(map(lambda x: getX(tm, x), xs))
+    print("xs:", xs)
+    print("graph_x:", graph_x)
+    drawPlots(plot_x, graph_x, xs)
+
+    graph_T = list(map(lambda x: getT(tm, x), xs))
+
+    print("xs_t:", xs)
+    print("graph_t:", graph_T)
+    drawPlots(plot_t, graph_T, xs)
+
+    showPlots()
+
 def makeWork():
     def work(*_):
         global lastUpdate
@@ -49,28 +64,7 @@ def makeWork():
         if (nlast - lastUpdate < 200): return
         lastUpdate = nlast
 
-        # print("working")
-        start()
-
-        tm = scl_time.get()
-
-        xs = list(drange(0, H, 0.1))
-        graph_x = list(map(lambda x: getX(tm, x), xs))
-        drawPlots(plot_x, graph_x, xs)
-
-        ts = list(drange(T0, Tm, 1))
-        graph_T = list(map(lambda t: getT(tm, t), ts))
-        drawPlots(plot_t, graph_T, ts)
-
-        print("xs:", xs)
-        print("graph_x:", graph_x)
-
-        print()
-        print("ts:", ts)
-        print("graph_t:", graph_T)
-        drawPlots(plot_t, graph_T, ts)
-
-        showPlots()
+        draw()
 
         return
 
@@ -118,7 +112,7 @@ def e_f(k):
 
 resolution_time = totalTime / cntTime
 
-scl_time = createScroll("t", 0, totalTime, resolution_time, False)
+scl_time = createScroll("t", 0, totalTime , resolution_time, False)
 ent_d = createEntry("D", e_f(D))
 ent_k = createEntry("K", e_f(K))
 ent_alpha = createEntry("alpha [0.5, 3]", e_f(0.5))
@@ -135,12 +129,15 @@ def drange(start, stop, step):
 def start(*_):
     global graph_x
     global xs
+    print("start")
+    # createFigure()
     d = float(ent_d.get())
     k = float(ent_k.get())
     alpha_ = float(ent_alpha.get())
 
     calc(Tm, T0, H, cntH, totalTime, cntTime, ro, C, d, lam, Q, k, R, E, alpha_)
-    graph_x = currentAlgorithm_()
+    draw()
+    # graph_x = currentAlgorithm_()
 
 
 def change_time(*_):
@@ -150,4 +147,5 @@ def change_time(*_):
 
 btn1.config(command=start)
 
+calc(Tm, T0, H, cntH, totalTime, cntTime, ro, C, D, lam, Q, K, R, E, alpha)
 root.mainloop()

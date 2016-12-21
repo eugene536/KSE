@@ -1,9 +1,13 @@
 import matplotlib.pyplot as plt
 
-def createAx():
-    f = plt.figure()
-    return f.add_subplot(111)
+fig = plt.figure()
 
+def createAx(x):
+    global fig
+    return fig.add_subplot(x)
+
+plot_x = createAx(211)
+plot_t = createAx(212)
 
 def drawPlots(ax, xs, fs):
     ax.cla()

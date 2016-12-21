@@ -13,8 +13,8 @@ def getX(t, z):
     idZ = int(z / dz)
     idT = min(mxT - 1, idT)
     idZ = min(mxH - 1, idZ)
-    print (dt, dz)
-    print (idT, idZ)
+    # print (dt, dz)
+    # print (idT, idZ)
     return tableX[idT][idZ]
 
 def getT(t, z):
@@ -25,7 +25,8 @@ def getT(t, z):
     return tableT[idT][idZ]
 
 def getSpeed(x, T, K, alf, R, E):
-    return -K * (x ** alf)  * math.exp(-E / (R * T))
+    # print("t: ", T)
+    return -K * (x ** alf) * math.exp(-E / (R * T))
 
 gK = 0
 gAlf = 0
@@ -78,6 +79,8 @@ def calc(Tm, T0, H, cntH, totalTime, cntTime, ro, C, D, lambd, Q, K, R, E, alf):
         for k in range(1, cntH - 1):
             tableX[n + 1][k] = dt * (D * (tableX[n][k - 1] - 2 * tableX[n][k] + tableX[n][k + 1]) / dz / dz + getSpeed(tableX[n][k], tableT[n][k], K, alf, R, E)) + tableX[n][k]
             tableT[n + 1][k] = dt * (lambd * 1.0 / (ro * C) * (tableT[n][k - 1] - 2 * tableT[n][k] + tableT[n][k + 1]) / dz / dz - Q * 1.0 / C * getSpeed(tableX[n][k], tableT[n][k], K, alf, R, E)) + tableT[n][k]
+
+            tableX[n+1][k] = max(0.0, tableX[n+1][k])
             # print(dt, dz)
             # print (D)
             # print ("der ", (tableX[n][k - 1] - 2 * tableX[n][k] + tableX[n][k + 1]))
@@ -98,11 +101,12 @@ def calc(Tm, T0, H, cntH, totalTime, cntTime, ro, C, D, lambd, Q, K, R, E, alf):
 
 
 
-calc(Constants.Tm, Constants.T0, Constants.H, Constants.cntH, Constants.totalTime, Constants.cntTime, Constants.ro, Constants.C, Constants.D, Constants.lam, Constants.Q, Constants.K, Constants.R, Constants.E, Constants.alpha)
-# print(getSpeed(1, Constants.T0, Constants.K, Constants.alpha, Constants.R, Constants.E))
+if __name__ == "__main__":
+    calc(Constants.Tm, Constants.T0, Constants.H, Constants.cntH, Constants.totalTime, Constants.cntTime, Constants.ro, Constants.C, Constants.D, Constants.lam, Constants.Q, Constants.K, Constants.R, Constants.E, Constants.alpha)
+    # print(getSpeed(1, Constants.T0, Constants.K, Constants.alpha, Constants.R, Constants.E))
 
-print ("x ", getX(10, 0.1))
-print ("temp ", getT(30, 0.1))
+    print ("x ", getX(10, 0.1))
+    print ("temp ", getT(30, 0.1))
 
-print("heelo")
+    print("heelo")
 
