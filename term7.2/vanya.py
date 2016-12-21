@@ -10,6 +10,10 @@ def initHill(maxX, dx):
 
 
 def ChehAlgo(maxX, dx, maxT, dt, u, kapa, initAlgo):
+    from PIL import Image
+    img = Image.open('test.txt')
+    img.show()
+
     init = initHill(maxX, dx)
     answer = []
     answer.append(init)

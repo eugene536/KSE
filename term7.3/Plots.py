@@ -1,16 +1,15 @@
 import matplotlib.pyplot as plt
 
-def drawPlots(xs, fs):
-    #if (drawPlots.printed == 1):
-#    plt.clf()
-    print("xs = ", xs)
-    print("fs = ", fs)
-    plt.clf()
-    plt.plot(fs, xs)
+def createAx():
+    f = plt.figure()
+    return f.add_subplot(111)
+
+
+def drawPlots(ax, xs, fs):
+    ax.cla()
+    ax.plot(fs, xs)
+
+
+def showPlots():
     plt.show()
 
-    #if (drawPlots.printed == 0):
-    #    plt.show()
-    #    drawPlots.printed = 1
-
-#drawPlots.printed = 0
