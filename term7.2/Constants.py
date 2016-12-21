@@ -1,4 +1,4 @@
-import numpy as np
+ import numpy as np
 
 MAX_T = 30
 sigma = 10
