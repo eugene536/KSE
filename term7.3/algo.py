@@ -1,7 +1,6 @@
 import math
 import Constants
 
-
 tableX = []
 tableT = []
 dz = 0
@@ -84,6 +83,7 @@ def calc(Tm, T0, H, cntH, totalTime, cntTime, ro, C, D, lambd, Q, K, R, E, alf):
 
 calc(Constants.Tm, Constants.T0, Constants.H,
      Constants.cntH, Constants.totalTime, Constants.cntTime, Constants.ro, Constants.C, Constants.D, Constants.lam, Constants.Q, Constants.K, Constants.R, Constants.E, Constants.alpha)
+print (getX(1000, 10))
 
 print("heelo")
 
