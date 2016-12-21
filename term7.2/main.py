@@ -10,6 +10,7 @@ import time
 import Plots
 import Plots3d
 
+
 sys.setrecursionlimit(3500)
 
 root = Tk()
