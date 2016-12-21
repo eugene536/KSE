@@ -1,8 +1,9 @@
 import math
+import Constants
+
 
 tableX = []
 tableT = []
-tableW = []
 dz = 0
 dt = 0
 mxT = 0
@@ -23,7 +24,6 @@ def getT(t, z):
     return tableT[idT][idZ]
 
 def getSpeed(x, T, K, alf, R, E):
-    # return 0
     return -K * (x ** alf)  * math.exp(-E / (R * T))
 
 gK = 0
@@ -55,10 +55,13 @@ def calc(Tm, T0, H, cntH, totalTime, cntTime, ro, C, D, lambd, Q, K, R, E, alf):
     global gAlf, gK, gR, gE
     global dz, dt
     global mxT, mxH
+    global tableX, tableT
     gAlf = alf
     gK = K
     gR = R
     gE = E
+    tableX = []
+    tableT = []
 
     tableX.append(initX(cntH))
     tableT.append(initT(cntH, Tm, T0))
@@ -70,7 +73,6 @@ def calc(Tm, T0, H, cntH, totalTime, cntTime, ro, C, D, lambd, Q, K, R, E, alf):
     dt = totalTime * 1.0 / cntTime
     mxT = cntTime
     mxH = cntH
-
     for n in range(0, cntTime - 1):
         for k in range(1, cntH - 1):
             tableX[n + 1][k] = dt * (D * (tableX[n][k - 1] - 2 * tableX[n][k] + tableX[n][k + 1]) / dz / dz + getSpeed(tableX[n][k], tableT[n][k], K, alf, R, E)) + tableX[n][k]
@@ -80,7 +82,8 @@ def calc(Tm, T0, H, cntH, totalTime, cntTime, ro, C, D, lambd, Q, K, R, E, alf):
         tableT[n + 1][0] = Tm
         tableT[n + 1][cntH - 1] = tableT[n + 1][cntH - 2]
 
-calc(300, 100, 10, 100, 10, 100, 10, 10, 10, 10, 10, 10, 10, 10, 10)
+calc(Constants.Tm, Constants.T0, Constants.H,
+     Constants.cntH, Constants.totalTime, Constants.cntTime, Constants.ro, Constants.C, Constants.D, Constants.lam, Constants.Q, Constants.K, Constants.R, Constants.E, Constants.alpha)
 
 print("heelo")
 
