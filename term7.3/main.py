@@ -42,7 +42,8 @@ def currentAlgorithm_(*_, **__):
 def draw():
     tm = scl_time.get()
 
-    xs = list(drange(0, H, 0.5))
+    step = H / 100
+    xs = list(drange(0, H, step))
     graph_x = list(map(lambda x: getX(tm, x), xs))
     print("xs:", xs)
     print("graph_x:", graph_x)

@@ -9,12 +9,17 @@ T0 = 293
 Tm = 773
 C = 1980
 ro = 830
-lam = 813
+lam = 0.13
 D = 8 * 10 ** (-12)
 maxTime = 1000
 Tm = 773
-H = 10
-totalTime = 100
 
-cntH = 100
-cntTime = 100
+H = 0.1
+totalTime = 50
+
+cntH = 1000
+cntTime = 5000
+
+# dz <= 0.000166
+# h >> 1.66666
+
