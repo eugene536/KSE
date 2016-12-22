@@ -42,7 +42,8 @@ def currentAlgorithm_(*_, **__):
 def draw():
     tm = scl_time.get()
 
-    step = H / 100
+    step = H / 10010 ** -4
+# dt = 10 ** -2
     xs = list(drange(0, H, step))
     graph_x = list(map(lambda x: getX(tm, x), xs))
     print("xs:", xs)
@@ -116,7 +117,7 @@ resolution_time = totalTime / cntTime
 scl_time = createScroll("t", 0, totalTime , resolution_time, False)
 ent_d = createEntry("D", e_f(D))
 ent_k = createEntry("K", e_f(K))
-ent_alpha = createEntry("alpha [0.5, 3]", e_f(0.5))
+ent_alpha = createEntry("alpha [0.5, 3]", e_f(alpha))
 scl_unused = createScroll("")
 
 
